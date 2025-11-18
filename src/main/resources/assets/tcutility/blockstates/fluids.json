@@ -1,17 +1,11 @@
 {
   "forge_marker": 1,
+  "defaults": {
+    "model": "forge:fluid"
+  },
   "variants": {
-    "milk": {
-      "model": "forge:fluid",
-      "custom": {
-        "fluid": "milk"
-      }
-    },
-    "test": {
-      "model": "forge:fluid",
-      "custom": {
-        "fluid": "test"
-      }
-    }
+    "milk":       [{}],
+    "test":       [{}],
+    "test_steam": [{}]
   }
 }

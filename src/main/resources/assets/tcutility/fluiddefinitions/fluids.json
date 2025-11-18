@@ -18,6 +18,6 @@
         "density": -1200,
         "temperature": 300,
         "viscosity": 1000,
-        "color": 0
+        "color": 16711680
     }
 }

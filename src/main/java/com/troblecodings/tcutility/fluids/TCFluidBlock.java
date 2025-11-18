@@ -13,6 +13,9 @@ public class TCFluidBlock extends BlockFluidClassic {
     public TCFluidBlock(final Fluid fluid) {
         super(fluid, Material.WATER);
 
+        System.out.println("[TCUtility] TCFluidBlock created for fluid: " 
+        	    + fluid.getName() + " still=" + fluid.getStill() + " flow=" + fluid.getFlowing());
+        
         setCreativeTab(TCTabs.FLUIDS);
     }
 

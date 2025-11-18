@@ -16,16 +16,9 @@ import com.troblecodings.tcutility.utils.FluidCreateInfo;
 import com.troblecodings.tcutility.utils.FluidProperties;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -33,10 +26,9 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class TCFluidsInit {
 
-    private TCFluidsInit() {
-    }
+	private TCFluidsInit() {}
 
-    public static ArrayList<Block> blocksToRegister = new ArrayList<>();
+    public static final List<Block> blocksToRegister = new ArrayList<>();
 
     @SubscribeEvent
     public static void registerBlock(final RegistryEvent.Register<Block> event) {
@@ -59,9 +51,7 @@ public class TCFluidsInit {
 
         for (final Entry<String, FluidProperties> fluidsEntry : fluids.entrySet()) {
             final String objectname = fluidsEntry.getKey();
-
             final FluidProperties property = fluidsEntry.getValue();
-
             final FluidCreateInfo fluidInfo = property.getFluidInfo();
 
             final TCFluids fluid = new TCFluids(objectname,
@@ -77,40 +67,6 @@ public class TCFluidsInit {
             block.setRegistryName(new ResourceLocation(TCUtilityMain.MODID, objectname));
             block.setUnlocalizedName(objectname);
             blocksToRegister.add(block);
-        }
-    }
-
-    public static void registerCustomMeshesAndStates() {
-        blocksToRegister.forEach(block -> {
-            String name = block.getUnlocalizedName().substring(5);
-
-            FluidStateMapper mapper = new FluidStateMapper(name);
-
-            Item item = Item.getItemFromBlock(block);
-            ModelBakery.registerItemVariants(item);
-            ModelLoader.setCustomMeshDefinition(item, mapper);
-            ModelLoader.setCustomStateMapper(block, mapper);
-        });
-    }
-
-    public static class FluidStateMapper extends StateMapperBase implements ItemMeshDefinition {
-
-        public final ModelResourceLocation location;
-
-        public FluidStateMapper(final String name) {
-            // location = new ModelResourceLocation(TCUtilityMain.MODID + ":" + name,
-            // "fluid");
-            location = new ModelResourceLocation(TCUtilityMain.MODID + ":fluids", name);
-        }
-
-        @Override
-        protected ModelResourceLocation getModelResourceLocation(final IBlockState state) {
-            return location;
-        }
-
-        @Override
-        public ModelResourceLocation getModelLocation(final ItemStack stack) {
-            return location;
         }
     }
 

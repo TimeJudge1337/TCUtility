@@ -83,6 +83,7 @@ processResources {
 	filesMatching("mcmod.info") {
 		expand "version": project.version, "mcversion": "1.12.2"
 	}
+	
 }
 
 jar {
