@@ -18,7 +18,7 @@ public class TCFluids extends Fluid {
         this.viscosity = fluidInfo.viscosity;
         this.isGaseous = fluidInfo.density > 0 ? false : true;
         this.luminosity = fluidInfo.luminosity;
-        this.color = fluidInfo.color;
+        //this.color = fluidInfo.color;
 
     }
 

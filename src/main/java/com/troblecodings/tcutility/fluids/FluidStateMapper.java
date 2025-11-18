@@ -13,7 +13,7 @@ public class FluidStateMapper extends StateMapperBase implements ItemMeshDefinit
     public final ModelResourceLocation location;
 
     public FluidStateMapper(final String name) {
-        location = new ModelResourceLocation(TCUtilityMain.MODID + ":fluids" + name);
+        location = new ModelResourceLocation(TCUtilityMain.MODID + ":" + name, "fluid");
     }
 
     @Override
